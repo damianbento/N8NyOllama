@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    restart: unless-stopped
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    networks:
+      - n8n-compose_default
+
+volumes:
+  ollama_data:
+
+networks:
+  n8n-compose_default:
+    external: true
